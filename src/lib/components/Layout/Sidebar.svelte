@@ -1,5 +1,5 @@
 <script>
-	import { showSidebar } from '$lib/stores/sidebarStore';
+	import { showSidebar } from '$lib/stores/sidebarStore.js';
 	import CaretLeft from '~icons/ph/caret-left';
 	import { page } from '$app/stores';
 
