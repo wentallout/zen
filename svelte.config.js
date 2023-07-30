@@ -1,13 +1,21 @@
-import { vitePreprocess } from "@sveltejs/kit/vite";
+import { vitePreprocess } from '@sveltejs/kit/vite';
 import adapter from '@sveltejs/adapter-netlify';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-    kit: {
+	kit: {
 		adapter: adapter()
 	},
 
-    preprocess: [vitePreprocess({})]
+	vitePlugin: {
+		inspector: {
+			toggleKeyCombo: 'meta-shift',
+			showToggleButton: 'always',
+			toggleButtonPos: 'bottom-right'
+		}
+	},
+
+	preprocess: [vitePreprocess({})]
 };
 
 export default config;
