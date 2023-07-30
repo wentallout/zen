@@ -1,16 +1,24 @@
 <script>
 	import List from '~icons/ph/list';
+
+	import { showSidebar } from '$lib/stores/sidebarStore';
+
+	function handleSidebar() {
+		showSidebar.update((x) => !x);
+	}
 </script>
 
-<header>
-	<List width="32" height="32" />
+<header class="sidebar">
+	<button class="sidebar__btn" on:click={handleSidebar}>
+		<List width="32" height="32" />
+	</button>
 	<a href="/">
 		<div class="logo">Zen Garden</div>
 	</a>
 </header>
 
 <style>
-	header {
+	.sidebar {
 		width: 100%;
 		display: flex;
 		flex-direction: row;
@@ -20,6 +28,15 @@
 		background-color: black;
 		color: white;
 		gap: var(--space4);
+		position: sticky;
+		top: 0;
+		z-index: 99;
+	}
+
+	.sidebar__btn {
+		background-color: transparent;
+		color: var(--colorBgLayout);
+		cursor: pointer;
 	}
 
 	.logo {

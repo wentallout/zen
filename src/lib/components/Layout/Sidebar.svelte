@@ -1,6 +1,7 @@
 <script>
 	import CaretLeft from '~icons/ph/caret-left';
 	import { page } from '$app/stores';
+	import { showSidebar } from '$lib/stores/sidebarStore';
 	let sidebarEl;
 
 	let sidebarItems = [
@@ -19,7 +20,7 @@
 	];
 </script>
 
-<div class="sidebar" bind:this={sidebarEl}>
+<aside class:sidebar--show={$showSidebar} class="sidebar" bind:this={sidebarEl}>
 	<ul class="sidebar__list">
 		{#each sidebarItems as sidebarItem}
 			<li class="sidebar__item" class:active-page={$page.url.pathname === `${sidebarItem.path}`}>
@@ -27,18 +28,32 @@
 			</li>
 		{/each}
 	</ul>
-</div>
+</aside>
 
 <style>
 	.sidebar {
+		display: none;
 		border: 1px solid black;
 		color: black;
 		position: fixed;
 		top: 80px;
-		left: 0;
+		left: -1000px;
 		min-height: 100vh;
 		z-index: 2;
 		background-color: var(--colorBgLayout);
+	}
+
+	.sidebar--show {
+		display: block;
+		left: 0;
+	}
+
+	@media (min-width: 768px) {
+		.sidebar {
+			position: initial;
+			display: flex;
+			width: fit-content;
+		}
 	}
 
 	.sidebar__link {
@@ -49,14 +64,6 @@
 	.active-page {
 		background-color: var(--colorPrimary);
 		color: black;
-	}
-
-	@media (min-width: 768px) {
-		.sidebar {
-			position: initial;
-			display: flex;
-			width: fit-content;
-		}
 	}
 
 	.sidebar__list {
