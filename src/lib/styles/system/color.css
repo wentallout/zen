@@ -1,0 +1,13 @@
+:root {
+	--colorPrimary: hsl(150, 100%, 53%);
+	--colorPrimaryHover: hsl(150, 100%, 60%);
+	--colorPrimaryActive: hsl(150, 100%, 50%);
+
+	--colorBgLayout: #f9f3e8;
+	--colorBgSurface: rgb(0, 64, 55);
+	--colorBgLayoutGlassy: rgba(255, 255, 255, 0.5);
+	--colorBgSurfaceGlassy: rgba(0, 64, 55, 0.9);
+
+	--colorText: hsl(172, 100%, 3%);
+	--colorTextSecondary: hsl(172, 100%, 16%);
+}

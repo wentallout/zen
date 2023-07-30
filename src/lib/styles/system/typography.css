@@ -1,0 +1,77 @@
+@import '@fontsource-variable/readex-pro';
+
+@font-face {
+	font-family: 'Yipes';
+	src: url('/fonts/Yipes.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+:root {
+	--fontFancy: 'Yipes';
+	--lineHeight: 150%;
+	--lineHeightHeading1: 110%;
+	--lineHeightHeading2: 120%;
+	--lineHeightHeading3: 120%;
+	--lineHeightHeading4: 130%;
+	--lineHeightHeading5: 140%;
+
+	--fontSize: 1rem;
+	--fontSizeSM: 0.875rem;
+	--fontSizeLG: 1.125rem;
+	--fontSizeXL: 1.375rem;
+	--fontSizeHeading1: 2.625rem;
+	--fontSizeHeading2: 2.125rem;
+	--fontSizeHeading3: 1.75rem;
+	--fontSizeHeading4: 1.375rem;
+	--fontSizeHeading5: 1.125rem;
+
+	--proseWidth: 65ch;
+}
+
+body {
+	font-family: 'Readex Pro Variable', system-ui, sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: var(--colorText);
+}
+
+.display {
+	font-family: var(--fontFancy);
+	font-size: 5rem;
+	font-weight: normal;
+}
+
+h1 {
+	font-size: var(--fontSizeHeading1);
+	line-height: var(--lineHeightHeading1);
+	font-weight: 500;
+}
+
+h2 {
+	font-size: var(--fontSizeHeading2);
+	line-height: var(--lineHeightHeading2);
+	font-weight: 500;
+}
+
+h3 {
+	font-size: var(--fontSizeHeading3);
+	line-height: var(--lineHeightHeading3);
+}
+
+h4 {
+	font-size: var(--fontSizeHeading4);
+	line-height: var(--lineHeightHeading4);
+}
+
+h5 {
+	font-size: var(--fontSizeHeading5);
+	line-height: var(--lineHeightHeading5);
+}
+
+p {
+	font-size: var(--fontSize);
+	line-height: var(--lineHeight);
+	font-weight: 400;
+}

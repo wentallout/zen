@@ -1,0 +1,5 @@
+:root {
+	--borderRadiusSM: calc((var(--borderRadius) / 2));
+	--borderRadius: 16px;
+	--borderRadiusLG: calc((var(--borderRadius) * 2));
+}

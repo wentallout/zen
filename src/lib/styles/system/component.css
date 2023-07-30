@@ -1,0 +1,20 @@
+.btn {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	border-radius: var(--borderRadiusSM);
+	padding: var(--space2) var(--space3);
+	height: fit-content;
+	flex-direction: row;
+	gap: var(--space2);
+}
+
+.btn--primary {
+	background-color: var(--colorPrimary);
+}
+
+.btn--secondary {
+	background-color: transparent;
+	outline: 1px solid var(--colorText);
+}
