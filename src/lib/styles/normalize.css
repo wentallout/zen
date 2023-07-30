@@ -70,7 +70,6 @@ Use a better box model (opinionated).
 }
 
 html {
-	/* Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3) */
 	font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',
 		'Segoe UI Emoji';
 	line-height: 1.15; /* 1. Correct the line height in all browsers. */
@@ -115,15 +114,6 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 abbr[title] {
 	text-decoration: underline dotted;
 }
-
-/**
-Add the correct font weight in Edge and Safari.
-*/
-
-/**
-1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
-2. Correct the odd 'em' font sizing in all browsers.
-*/
 
 code,
 kbd,
