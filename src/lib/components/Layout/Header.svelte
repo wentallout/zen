@@ -1,5 +1,5 @@
 <script>
-	import { showSidebar } from '$lib/stores/SidebarStore.js';
+	import { showSidebar } from '$lib/stores/sidebarStore.js';
 	import List from '~icons/ph/list';
 
 	function handleSidebar() {
