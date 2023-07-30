@@ -1,10 +1,9 @@
 <script>
+	import { showSidebar } from '$lib/stores/sidebarStore';
 	import List from '~icons/ph/list';
 
-	import { showSidebar } from '$lib/stores/sidebarStore.js';
-
 	function handleSidebar() {
-		showSidebar.update((x) => !x);
+		showSidebar.update((show) => !show);
 	}
 </script>
 

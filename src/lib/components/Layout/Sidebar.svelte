@@ -1,7 +1,8 @@
 <script>
+	import { showSidebar } from '$lib/stores/sidebarStore';
 	import CaretLeft from '~icons/ph/caret-left';
 	import { page } from '$app/stores';
-	import { showSidebar } from '$lib/stores/sidebarStore.js';
+
 	let sidebarEl;
 
 	let sidebarItems = [
