@@ -34,10 +34,8 @@
 		"typescript": "^5.0.0",
 		"unplugin-icons": "^0.16.5",
 		"vite": "^4.4.7",
-		"vitest": "^0.32.2"
-	},
-	"type": "module",
-	"dependencies": {
+		"vitest": "^0.32.2",
 		"@fontsource-variable/readex-pro": "^5.0.5"
-	}
+	},
+	"type": "module"
 }
