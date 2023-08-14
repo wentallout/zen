@@ -1,10 +1,10 @@
 <script>
-	import { showSidebar } from '$lib/stores/sidebarStore.js';
+	import { handleSidebar } from '$lib/stores/sidebarStore.js';
 	import List from '~icons/ph/list';
 
-	function handleSidebar() {
-		showSidebar.update((show) => !show);
-	}
+	// function handleSidebar() {
+	// 	showSidebar.update((show) => !show);
+	// }
 </script>
 
 <header class="sidebar">

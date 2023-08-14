@@ -15,27 +15,29 @@
 
 <PageTitle pageTitle="Kanban" pageDesc="ayo" />
 
-<section>
-	<input bind:value={taskInput} type="text" placeholder="enter a task. ex: cleaning dishes" />
+<div class="container">
+	<section>
+		<input bind:value={taskInput} type="text" placeholder="enter a task. ex: cleaning dishes" />
 
-	<div bind:this={kanbanEl} class="kanban">
-		{#each data.columns as column}
-			{@const cards = data.cards.filter((c) => c.column === column.id)}
-			<div class="kanban__col">
-				<h3 class="kanban__type">{column.label}</h3>
-				{#if cards.length > 0}
-					{#each cards as card}
-						<article class="task">
-							<p class="task__title">{card.title}</p>
-						</article>
-					{/each}
-				{:else}
-					<p>No Tasks</p>
-				{/if}
-			</div>
-		{/each}
-	</div>
-</section>
+		<div bind:this={kanbanEl} class="kanban">
+			{#each data.columns as column}
+				{@const cards = data.cards.filter((c) => c.column === column.id)}
+				<div class="kanban__col">
+					<h3 class="kanban__type">{column.label}</h3>
+					{#if cards.length > 0}
+						{#each cards as card}
+							<article class="task">
+								<p class="task__title">{card.title}</p>
+							</article>
+						{/each}
+					{:else}
+						<p>No Tasks</p>
+					{/if}
+				</div>
+			{/each}
+		</div>
+	</section>
+</div>
 
 <style>
 	.task {

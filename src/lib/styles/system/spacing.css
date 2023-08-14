@@ -1,12 +1,21 @@
 :root {
-	--space1: 4px;
-	--space2: 8px;
-	--space3: 12px;
-	--space4: 16px;
-	--space5: 24px;
-	--space6: 32px;
-	--space7: 40px;
-	--space8: 48px;
-	--space9: 64px;
-	--space10: 80px;
+	--space-3xs: clamp(0.25rem, calc(0.24rem + 0.06vw), 0.31rem);
+	--space-2xs: clamp(0.5rem, calc(0.49rem + 0.06vw), 0.56rem);
+	--space-xs: clamp(0.75rem, calc(0.72rem + 0.13vw), 0.88rem);
+	--space-s: clamp(1rem, calc(0.97rem + 0.13vw), 1.13rem);
+	--space-m: clamp(1.5rem, calc(1.46rem + 0.19vw), 1.69rem);
+	--space-l: clamp(2rem, calc(1.94rem + 0.26vw), 2.25rem);
+	--space-xl: clamp(3rem, calc(2.91rem + 0.38vw), 3.38rem);
+	--space-2xl: clamp(4rem, calc(3.88rem + 0.51vw), 4.5rem);
+	--space-3xl: clamp(6rem, calc(5.83rem + 0.77vw), 6.75rem);
+
+	--space1: var(--space-3xs);
+	--space2: var(--space-2xs);
+	--space3: var(--space-xs);
+	--space4: var(--space-s);
+	--space5: var(--space-m);
+	--space6: var(--space-l);
+	--space7: var(--space-xl);
+	--space8: var(--space-2xl);
+	--space9: var(--space-3xl);
 }

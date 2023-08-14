@@ -71,8 +71,6 @@
 <style>
 	.passgen {
 		width: 100%;
-		max-width: 480px;
-
 		border: 1px solid var(--colorText);
 		border-radius: var(--borderRadius);
 		overflow: hidden;

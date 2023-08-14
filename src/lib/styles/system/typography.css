@@ -1,4 +1,42 @@
-@import '@fontsource-variable/readex-pro';
+@font-face {
+	font-family: 'SVN-Sofia Pro';
+	src: url('fonts/SVN-SofiaProLight.woff2') format('woff2');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'SVN-Sofia Pro';
+	src: url('fonts/SVN-SofiaPro.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'SVN-Sofia Pro';
+	src: url('fonts/SVN-SofiaProBold.woff2') format('woff2');
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'SVN-Sofia Pro';
+	src: url('fonts/SVN-SofiaProMedium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'SVN-Sofia Pro';
+	src: url('fonts/SVN-SofiaProSemiBold.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
 
 @font-face {
 	font-family: 'Yipes';
@@ -17,60 +55,69 @@
 	--lineHeightHeading4: 130%;
 	--lineHeightHeading5: 140%;
 
-	--fontSize: 1rem;
-	--fontSizeSM: 0.875rem;
-	--fontSizeLG: 1.125rem;
-	--fontSizeXL: 1.375rem;
-	--fontSizeHeading1: 2.625rem;
-	--fontSizeHeading2: 2.125rem;
-	--fontSizeHeading3: 1.75rem;
-	--fontSizeHeading4: 1.375rem;
-	--fontSizeHeading5: 1.125rem;
+	--step--2: clamp(0.69rem, calc(0.69rem + 0.03vw), 0.72rem);
+	--step--1: clamp(0.83rem, calc(0.82rem + 0.07vw), 0.9rem);
+	--step-0: clamp(1rem, calc(0.97rem + 0.13vw), 1.13rem);
+	--step-1: clamp(1.2rem, calc(1.15rem + 0.21vw), 1.41rem);
+	--step-2: clamp(1.44rem, calc(1.37rem + 0.33vw), 1.76rem);
+	--step-3: clamp(1.73rem, calc(1.62rem + 0.48vw), 2.2rem);
+	--step-4: clamp(2.07rem, calc(1.92rem + 0.69vw), 2.75rem);
+	--step-5: clamp(2.49rem, calc(2.27rem + 0.97vw), 3.43rem);
+
+	--fontSize: var(--step-0);
+	--fontSizeHeading1: var(--step-5);
+	--fontSizeHeading2: var(--step-4);
+	--fontSizeHeading3: var(--step-3);
+	--fontSizeHeading4: var(--step-2);
+	--fontSizeHeading5: var(--step-1);
 
 	--proseWidth: 65ch;
 }
 
 body {
-	font-family: 'Readex Pro Variable', system-ui, sans-serif;
+	font-family: 'SVN-Sofia Pro', system-ui, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	color: var(--colorText);
 }
 
-.display {
-	font-family: var(--fontFancy);
-	font-size: 5rem;
-	font-weight: normal;
-}
-
-h1 {
+h1,
+.textHeading1 {
 	font-size: var(--fontSizeHeading1);
 	line-height: var(--lineHeightHeading1);
 	font-weight: 500;
 }
 
-h2 {
+h2,
+.textHeading2 {
 	font-size: var(--fontSizeHeading2);
 	line-height: var(--lineHeightHeading2);
 	font-weight: 500;
 }
 
-h3 {
+h3,
+.textHeading3 {
 	font-size: var(--fontSizeHeading3);
 	line-height: var(--lineHeightHeading3);
+	font-weight: 500;
 }
 
-h4 {
+h4,
+.textHeading4 {
 	font-size: var(--fontSizeHeading4);
 	line-height: var(--lineHeightHeading4);
+	font-weight: 500;
 }
 
-h5 {
+h5,
+.textHeading5 {
 	font-size: var(--fontSizeHeading5);
 	line-height: var(--lineHeightHeading5);
+	font-weight: 500;
 }
 
-p {
+p,
+.textBody {
 	font-size: var(--fontSize);
 	line-height: var(--lineHeight);
 	font-weight: 400;

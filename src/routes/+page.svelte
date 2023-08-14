@@ -1,10 +1,11 @@
 <script>
-	
 </script>
 
-<div class="welcome">
-	<h1 class="display welcome__text">Welcome to Zen Garden</h1>
-	<img class="welcome__bg" alt="" srcset="" />
+<div class="container">
+	<div class="welcome">
+		<h1 class="display welcome__text">Welcome to Zen Garden</h1>
+		<img class="welcome__bg" alt="" srcset="" />
+	</div>
 </div>
 
 <style>

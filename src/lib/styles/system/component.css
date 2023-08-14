@@ -4,10 +4,13 @@
 	align-items: center;
 	cursor: pointer;
 	border-radius: var(--borderRadiusSM);
-	padding: var(--space2) var(--space3);
+	padding: var(--space3) var(--space4);
 	height: fit-content;
 	flex-direction: row;
 	gap: var(--space2);
+	line-height: normal;
+	height: 48px;
+	line-height: normal !important;
 }
 
 .btn--primary {
@@ -17,4 +20,42 @@
 .btn--secondary {
 	background-color: transparent;
 	outline: 1px solid var(--colorText);
+}
+
+input[type='checkbox'] {
+	border-radius: var(--borderRadiusSM);
+	padding: var(--space3) var(--space4);
+	height: 24px;
+	aspect-ratio: 1/1;
+}
+
+input[type='text'] {
+	border-radius: var(--borderRadiusSM);
+	border: 1px solid black;
+	line-height: normal;
+	padding: var(--space3) var(--space4);
+	height: 48px;
+	margin-bottom: var(--space3);
+}
+
+.input-group {
+	display: flex;
+	flex-direction: column;
+	max-width: var(--proseWidth);
+	gap: var(--space2);
+}
+
+.button-group {
+	display: flex;
+	flex-direction: row;
+	gap: var(--space3);
+	margin-bottom: var(--space7);
+}
+
+label {
+	font-size: var(--fontSize);
+}
+
+button:disabled {
+	background-color: grey;
 }

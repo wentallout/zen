@@ -11,27 +11,25 @@
 	<Sidebar />
 
 	<main>
-		<div class="main__content">
-			<slot />
-		</div>
+		<slot />
 	</main>
 </div>
 <Footer />
 
 <style>
 	.parent {
-		margin: 0 auto;
 		display: flex;
 		flex-direction: row;
 		z-index: 1;
 		background-color: var(--colorBgLayout);
+		overflow: hidden;
+		/* gap: var(--space4); */
 	}
 
 	main {
 		position: relative;
-		flex-grow: 1;
 		z-index: 1;
-
 		min-height: 100vh;
+		width: 100%;
 	}
 </style>

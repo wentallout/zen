@@ -1,11 +1,13 @@
 <script>
-	import { showSidebar } from '$lib/stores/sidebarStore.js';
-	import CaretLeft from '~icons/ph/caret-left';
+	import { showSidebar, handleSidebar } from '$lib/stores/sidebarStore.js';
+
 	import { page } from '$app/stores';
 
-	let sidebarEl;
-
 	let sidebarItems = [
+		{
+			name: 'Home',
+			path: '/'
+		},
 		{
 			name: 'Password Generator',
 			path: '/passgen'
@@ -21,11 +23,13 @@
 	];
 </script>
 
-<aside class:sidebar--show={$showSidebar} class="sidebar" bind:this={sidebarEl}>
+<aside class:sidebar--show={$showSidebar} class="sidebar">
 	<ul class="sidebar__list">
 		{#each sidebarItems as sidebarItem}
 			<li class="sidebar__item" class:active-page={$page.url.pathname === `${sidebarItem.path}`}>
-				<a class="sidebar__link" href={sidebarItem.path}>{sidebarItem.name} </a>
+				<a on:click={handleSidebar} class="sidebar__link textBody" href={sidebarItem.path}
+					>{sidebarItem.name}
+				</a>
 			</li>
 		{/each}
 	</ul>
@@ -33,33 +37,29 @@
 
 <style>
 	.sidebar {
-		display: none;
-		border: 1px solid black;
-		color: black;
+		display: flex;
 		position: fixed;
-		top: 80px;
-		left: -1000px;
-		min-height: 100vh;
-		z-index: 2;
-		background-color: var(--colorBgLayout);
+		transition: 0.1s linear;
+		width: 0;
+		overflow: hidden;
+		z-index: 99;
 	}
 
 	.sidebar--show {
-		display: block;
-		left: 0;
+		width: 100vw;
+		background-color: var(--colorBgLayout);
 	}
 
-	@media (min-width: 768px) {
-		.sidebar {
-			position: initial;
-			display: flex;
-			width: fit-content;
-		}
-	}
-
-	.sidebar__link {
-		display: block;
+	.sidebar__list {
 		width: 100%;
+		margin: 0;
+		position: relative;
+	}
+
+	.sidebar__item {
+		background: black;
+		border-bottom: 1px solid var(--colorBgLayout);
+		color: var(--colorBgLayout);
 	}
 
 	.active-page {
@@ -67,18 +67,9 @@
 		color: black;
 	}
 
-	.sidebar__list {
-		width: 100%;
-		margin: 0;
-	}
-
-	.sidebar__item {
-		width: 100%;
-		border-bottom: 1px solid black;
-	}
-
 	.sidebar__link {
-		padding: var(--space2) var(--space5);
+		width: 100%;
+		padding: var(--space6) var(--space5);
 		display: block;
 	}
 </style>

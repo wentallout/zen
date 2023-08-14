@@ -1,8 +1,10 @@
 <script>
+	import CurrentWeatherCard from './../../lib/components/Weather/CurrentWeatherCard.svelte';
 	import MiniWeatherCard from '$lib/components/Weather/MiniWeatherCard.svelte';
 	import PageTitle from '$lib/components/Layout/PageTitle.svelte';
 	import { onMount } from 'svelte';
-	import { fade } from 'svelte/transition';
+	import { blur } from 'svelte/transition';
+	import Spinner from '$lib/components/Loading/Spinner.svelte';
 	let cityInput;
 	let fiveDaysForecast;
 	let currentWeather;
@@ -13,9 +15,34 @@
 
 	const API_KEY = `0ce29e6314149fac7ccf88c8489a268b`;
 
-	function handleSearch() {
+	function handleSearchInput() {
 		getCityCoordinates();
 	}
+
+	const getWeatherDetails = (cityName, lat, lon) => {
+		newCityName = cityName;
+		const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
+
+		fetch(WEATHER_API_URL)
+			.then((res) => res.json())
+			.then((data) => {
+				let uniqueForecastDays = [];
+
+				fiveDaysForecast = data.list.filter((forecast) => {
+					const forecastDate = new Date(forecast.dt_txt).getDate();
+					if (!uniqueForecastDays.includes(forecastDate)) {
+						uniqueForecastDays = [...uniqueForecastDays, forecastDate];
+						return uniqueForecastDays;
+					}
+				});
+
+				// currentWeather.cityName = cityName;
+				currentWeather = fiveDaysForecast[0];
+			})
+			.catch(() => {
+				alert('error occurred while fetching the weather forecast');
+			});
+	};
 
 	const getCityCoordinates = () => {
 		let cityName = cityInput.trim();
@@ -35,29 +62,6 @@
 			})
 			.catch(() => {
 				alert('Error occured');
-			});
-	};
-
-	const getWeatherDetails = (cityName, lat, lon) => {
-		newCityName = cityName;
-		const WEATHER_API_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}`;
-
-		fetch(WEATHER_API_URL)
-			.then((res) => res.json())
-			.then((data) => {
-				const uniqueForecastDays = [];
-
-				fiveDaysForecast = data.list.filter((forecast) => {
-					const forecastDate = new Date(forecast.dt_txt).getDate();
-					if (!uniqueForecastDays.includes(forecastDate)) {
-						return uniqueForecastDays.push(forecastDate);
-					}
-				});
-
-				currentWeather = fiveDaysForecast[0];
-			})
-			.catch(() => {
-				alert('error occurred while fetching the weather forecast');
 			});
 	};
 
@@ -99,45 +103,38 @@
 
 <div class="container">
 	<div class="weather">
-		<p>Enter a city name</p>
-		<input
-			on:keyup={(e) => e.key === 'Enter' && handleSearch()}
-			bind:value={cityInput}
-			class="weather__input"
-			type="text"
-			placeholder="Ex: New York, London"
-		/>
+		<div class="input-group">
+			<label for="cityname">City name</label>
+			<input
+				id="cityname"
+				on:keyup={(e) => e.key === 'Enter' && handleSearchInput()}
+				bind:value={cityInput}
+				class="weather__input"
+				type="text"
+				placeholder="Ex: New York, London" />
+		</div>
 
-		<button on:click={handleSearch} class="btn btn--primary"> <p>Search</p></button>
-		<button on:click={handleWeatherCurrentLocation} class="btn btn--secondary">
-			<p>Use current location</p>
-		</button>
+		<div class="button-group">
+			<button disabled={!cityInput} on:click={handleSearchInput} class="btn btn--primary textBody">
+				Search</button>
+			<button on:click={handleWeatherCurrentLocation} class="btn btn--secondary textBody">
+				Use current location
+			</button>
+		</div>
 
 		<div class="data">
 			{#if currentWeather}
-				<div transition:fade|global class="data__current">
-					<div class="data__detail">
-						<h2>{newCityName}</h2>
-						<h3>{currentWeather.dt_txt.split(' ')[0]}</h3>
-						<p>Temperature: {(currentWeather.main.temp - 273.15).toFixed(2)} °C</p>
-						<p>Wind: {currentWeather.wind.speed} M/S</p>
-						<p>Humidity: {currentWeather.main.humidity}%</p>
-					</div>
-					<div class="data__icon">
-						<img
-							class="weather__icon"
-							src="https://openweathermap.org/img/wn/{currentWeather.weather[0].icon}@4x.png"
-							alt="weather icon"
-						/>
-						<p>{currentWeather.weather[0].description}</p>
-					</div>
-				</div>
+				{#key currentWeather}
+					<CurrentWeatherCard cityName={newCityName} data={currentWeather} />
+				{/key}
 			{/if}
 
 			<div class="forecast">
 				<div class="forecast__cards">
 					{#each fiveDaysForecast || [] as forecast}
-						<MiniWeatherCard data={forecast} />
+						{#key forecast}
+							<MiniWeatherCard data={forecast} />
+						{/key}
 					{/each}
 				</div>
 			</div>
@@ -146,40 +143,10 @@
 </div>
 
 <style>
-	.weather {
-	}
-
-	.weather__input {
-		height: 48px;
-		border-radius: var(--borderRadiusSM);
-		outline: 0;
-		border: 1px solid var(--colorText);
-		padding: 0 var(--space2);
-		margin-bottom: var(--space6);
-	}
-
-	.weather__icon {
-		aspect-ratio: 1/1;
-	}
-
-	.data__current {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		background-color: black;
-		color: white;
-		width: fit-content;
-		padding: var(--space4) var(--space6);
-		border-radius: var(--borderRadiusSM);
-		margin-bottom: var(--space7);
-		justify-content: space-between;
-		gap: var(--space5);
-	}
-
 	.forecast__cards {
 		display: flex;
 		flex-direction: row;
-		gap: var(--space4);
+		gap: var(--space5);
 		flex-wrap: wrap;
 	}
 </style>

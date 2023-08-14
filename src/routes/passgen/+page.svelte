@@ -6,6 +6,14 @@
 
 <PageTitle pageTitle="Password Generator" pageDesc="Khoa's custom password generator." />
 
-<PassGen />
+<div class="container">
+	<PassGen />
 
-<PassphraseGen />
+	<PassphraseGen />
+</div>
+
+<style>
+	.container {
+		max-width: 480px;
+	}
+</style>

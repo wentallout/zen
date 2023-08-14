@@ -59,7 +59,30 @@
 					<a href="">
 						<p class="footer__item">HeroShit</p>
 					</a>
-				</li>	
+				</li>
+			</ul>
+		</div>
+		<div class="footer__col">
+			<h5 class="footer__title">Navigate</h5>
+
+			<ul class="footer__list">
+				<li>
+					<a href="">
+						<p>HeroShit</p>
+					</a>
+				</li>
+
+				<li>
+					<a href="">
+						<p class="footer__item">HeroShit</p>
+					</a>
+				</li>
+
+				<li>
+					<a href="">
+						<p class="footer__item">HeroShit</p>
+					</a>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -70,7 +93,6 @@
 <style>
 	footer {
 		padding: 140px 24px;
-
 		color: var(--colorBgLayout);
 		position: relative;
 		overflow: hidden;
@@ -105,7 +127,7 @@
 		padding: var(--space8) var(--space6);
 
 		--min: 20ch;
-		--gap: var(--space2);
+		--gap: var(--space8);
 
 		display: grid;
 		grid-gap: var(--gap);
@@ -115,13 +137,13 @@
 
 	.footer__title {
 		font-weight: 500;
-		margin-bottom: var(--space4);
+		margin-bottom: var(--space6);
 	}
 
 	.footer__list {
 		display: flex;
 		flex-direction: column;
-		gap: var(--space2);
+		gap: var(--space4);
 		max-width: var(--proseWidth);
 	}
 </style>

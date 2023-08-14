@@ -1,5 +1,3 @@
-/* Write your global styles here, in PostCSS syntax */
-
 @import url(normalize.css);
 @import url(system/color.css);
 @import url(system/spacing.css);
@@ -10,23 +8,22 @@
 
 .icon {
 	color: currentColor;
+	flex: none;
+}
+
+*:has(.icon) {
+	flex: none;
+}
+
+.hidden {
+	display: none;
 }
 
 .container {
 	width: 100%;
-	padding-left: 16px;
-	padding-right: 16px;
-}
-
-input[type='checkbox'] {
-	border-radius: var(--borderRadiusSM);
-	padding: var(--space2) var(--space3);
-	height: 24px;
-	aspect-ratio: 1/1;
+	padding: var(--space7) var(--space5);
 }
 
 section {
-	margin-left: 16px;
-	margin-right: 16px;
-	margin-bottom: 88px;
+	margin-bottom: var(--space9);
 }

@@ -93,18 +93,21 @@
 	<div class="passgen">
 		<div class="result">
 			<p class="result__text">{resultPass}</p>
-			<button on:click={handleCopy} class="btn result__copy" id="clipboard">
+			<button
+				class:hidden={!resultPass}
+				on:click={handleCopy}
+				class="btn result__copy"
+				id="clipboard">
 				<Copy width="16" height="16" />
 			</button>
 		</div>
 
 		<div class="btn-container">
-			<button on:click={handlePassGen} class="btn passgen__btn">
-				<p>Generate Random Password</p>
+			<button on:click={handlePassGen} class="btn passgen__btn textBody">
+				Generate Random Password
 			</button>
 			<button on:click={() => (showModal = true)} class="btn btn--secondary">
 				<GearSix />
-				<p>Setting</p>
 			</button>
 		</div>
 
@@ -140,9 +143,9 @@
 <style>
 	.passgen {
 		width: 100%;
-		max-width: 480px;
-
-		border: 1px solid var(--color);
+		border: 1px solid var(--colorText);
+		overflow: hidden;
+		border-radius: var(--borderRadius);
 	}
 
 	.passgen__btn {
@@ -159,15 +162,13 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		width: 100%;
-		margin-bottom: var(--space7);
-		gap: var(--space4);
 	}
 
 	.result {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		border: 1px solid black;
+
 		position: relative;
 		height: 80px;
 	}

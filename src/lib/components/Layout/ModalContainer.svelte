@@ -10,23 +10,26 @@
 <dialog
 	bind:this={dialogEl}
 	on:close={() => (showModal = false)}
-	on:click|self={() => dialogEl.close()}
->
+	on:click|self={() => dialogEl.close()}>
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div on:click|stopPropagation>
-		<h3 class="modal__header">
+		<h4 class="modal__header">
 			<slot name="header" />
-		</h3>
+		</h4>
 
 		<slot />
 		<!-- svelte-ignore a11y-autofocus -->
-		<button class="btn" autofocus on:click={() => dialogEl.close()}>close modal</button>
+		<button class="btn" autofocus on:click={() => dialogEl.close()}>Close</button>
 	</div>
 </dialog>
 
 <style>
 	.modal__header {
 		margin-bottom: var(--space6);
+	}
+
+	.btn {
+		width: 100%;
 	}
 
 	dialog {
